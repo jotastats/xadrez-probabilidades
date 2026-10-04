@@ -1,0 +1,53 @@
+XADREZ / PROBABILIDADES
+
+VERSÃO COMPACTA
+Dois campos de rating com atualização automática, uma barra de 20 pixels,
+estimativas acima e intervalos abaixo. Detalhes em seção recolhível.
+
+PARA USAR AGORA
+Extraia todos os arquivos deste ZIP para uma pasta. Abra index.html com
+dois cliques. A calculadora funciona sem internet, depois de extraída.
+Mantenha index.html, styles.css, app.js, model.js e assets/ juntos.
+
+PARA COLOCAR NA INTERNET
+Leia docs/guia_github_xadrez.pdf. O guia mostra como criar uma conta gratuita,
+enviar os arquivos e ativar o GitHub Pages, sem escrever código.
+Envie o conteúdo extraído para a raiz do repositório. Não envie o ZIP.
+O arquivo index.html deve aparecer diretamente na lista principal.
+
+O ESTUDO
+docs/miniartigo_xadrez.pdf resume a base, o modelo, a validação e exemplos.
+As estimativas usam 20.983 partidas de 50 competições de 2025 e o rating
+FIDE Standard vigente no mês da partida, com mínimo de 1500 para ambos.
+Os IC95% são percentis de 1.000 reamostragens estratificadas de competições.
+Os dados individuais de jogadores não fazem parte deste kit público.
+
+ARQUIVOS
+index.html: estrutura e textos da página.
+styles.css: cores, tipografia e adaptação a celular/notebook.
+app.js: fórmulas, intervalos e desenho da barra com rótulos externos.
+model.js: coeficientes finais e 1.000 conjuntos de coeficientes bootstrap.
+assets/: duas ilustrações vetoriais decorativas, criadas para este projeto.
+docs/: estudo e guia em PDF.
+
+A barra preserva a proporção exata das três probabilidades. Quando os
+rótulos se aproximam demais, apenas seus textos se afastam e linhas
+discretas identificam o segmento correspondente. Rótulos exibidos com uma
+casa decimal podem somar 99,9% ou 100,1% por arredondamento.
+Estimativas muito próximas dos extremos aparecem como <0,1% ou >99,9%,
+para não sugerir impossibilidade ou certeza. Em telas pequenas, o intervalo
+pode aparecer em duas linhas, preservando a fonte e a legibilidade.
+
+PRIVACIDADE E FUNCIONAMENTO
+Os cálculos são feitos no navegador. Não há cadastro de visitantes,
+formulário enviado a servidor, cookies de rastreamento ou serviços externos
+necessários ao cálculo. Não há instalação de pacotes, etapa de compilação,
+API paga ou necessidade de conhecer HTML, CSS ou JavaScript para publicar.
+
+Os adornos quadriculados laranja e preto são uma alusão visual sutil às
+cores da ALEX. O projeto não usa o logotipo do clube nem declara endosso.
+
+VERIFICAÇÃO
+Fórmulas, intervalos, eventos de consulta e geometria dos rótulos foram
+conferidos; a barra foi renderizada e inspecionada em diferentes larguras.
+A página completa não foi executada em um navegador real neste ambiente.

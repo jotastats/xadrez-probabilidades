@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f1e9">
+  <meta name="description" content="Consulte as probabilidades de vitória das brancas, empate e vitória das pretas a partir dos ratings FIDE Standard, com intervalos de confiança de 95%.">
+  <title>Xadrez · probabilidades</title>
+  <link rel="icon" type="image/svg+xml" href="assets/emblema.svg">
+  <link rel="stylesheet" href="styles.css">
+  <script src="model.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#consulta">Ir para a consulta</a>
+  <div class="page-shell">
+    <header class="masthead">
+      <a class="wordmark" href="./" aria-label="Xadrez, início">
+        <img src="assets/emblema.svg" width="26" height="26" alt="">
+        <h1>Xadrez <span class="wordmark-sub">/ probabilidades</span></h1>
+      </a>
+      <span class="checker" aria-hidden="true"></span>
+    </header>
+
+    <main>
+      <section class="calculator" aria-label="Consulta de probabilidades">
+        <form id="consulta" novalidate>
+          <div class="rating-pair">
+            <div class="rating-field">
+              <label for="white-rating"><span class="piece-dot piece-white" aria-hidden="true"></span>Rating das brancas</label>
+              <input id="white-rating" name="brancas" type="number" inputmode="numeric" min="1500" max="3000" step="1" value="2000" required aria-describedby="input-help input-message" autocomplete="off">
+            </div>
+            <button type="button" class="swap-button" id="swap" aria-label="Trocar os ratings das brancas e das pretas" title="Trocar os ratings">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8h15m-4-4 4 4-4 4M20 16H5m4-4-4 4 4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="rating-field">
+              <label for="black-rating"><span class="piece-dot piece-black" aria-hidden="true"></span>Rating das pretas</label>
+              <input id="black-rating" name="pretas" type="number" inputmode="numeric" min="1500" max="3000" step="1" value="2000" required aria-describedby="input-help input-message" autocomplete="off">
+            </div>
+          </div>
+          <p id="input-help" class="sr-only">Digite os ratings FIDE Standard para atualizar a consulta automaticamente.</p>
+          <p id="input-message" class="input-message" role="status" hidden></p>
+        </form>
+
+        <div id="results" class="results">
+          <span id="rating-summary" class="sr-only">2000 × 2000</span>
+          <div id="probability-chart" class="probability-chart"></div>
+          <p class="chart-caption">Probabilidade acima · IC de 95% abaixo (em %)</p>
+          <p id="live-summary" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
+        </div>
+        <noscript><p class="no-script">Ative o JavaScript no seu navegador para calcular as probabilidades. Você também pode consultar os exemplos no <a href="docs/miniartigo_xadrez.pdf">estudo em PDF</a>.</p></noscript>
+      </section>
+
+      <section class="notes" aria-label="Sobre as estimativas">
+        <details>
+          <summary>Sobre as estimativas<span aria-hidden="true">+</span></summary>
+          <div class="details-copy"><p>O intervalo de confiança (IC) expressa a incerteza da probabilidade estimada. Uma estimativa de 30% com intervalo de 26% a 34% indica a faixa de valores plausíveis para essa probabilidade, segundo o modelo.</p><p>Os intervalos são aproximados, calculados por reamostragem de torneios. Não são uma previsão do resultado de uma partida e não precisam somar 100%. A seleção de torneios e a repetição de jogadores limitam sua generalização.</p></div>
+          <div class="details-copy"><p>As estimativas fornecidas são obtidas por meio de um modelo linear generalizado multinomial baseado em 20.983 partidas realizadas em 2025 em uma seleção de 50 torneios FIDE STD registrados no site <a href="https://chess-results.com/" target="_blank" rel="noopener noreferrer">chess-results.com</a>.</p><p>A base usa o rating FIDE Standard vigente no mês de cada partida e inclui apenas jogos efetivamente disputados entre jogadores com rating de pelo menos 1500. A faixa individual observada vai de 1500 a 2816; combinações extremas têm menos suporte nos dados.</p><a class="text-link" href="docs/miniartigo_xadrez.pdf">Ler o estudo em PDF <span aria-hidden="true">↗</span></a></div>
+        </details>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
